@@ -15,18 +15,22 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-plugin-material-ui',
+      // If you want to use styled components you should change the injection order.
       options: {
-        name: `images`,
-        path: `${__dirname}/content/images`,
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
+        // Puts script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
       },
     },
     {

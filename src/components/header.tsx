@@ -1,37 +1,46 @@
-import { Link } from 'gatsby'
+import { Link as GatsbyLink } from 'gatsby'
 import React, { FC } from 'react'
+import { AppBar, Toolbar, Typography, Link, Button } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
+
+const useStyles = makeStyles({
+  toolbar: {},
+  title: {
+    flexGrow: 1,
+  },
+  link: {
+    textDecoration: 'none',
+  },
+})
 
 export interface HeaderProps {
   siteTitle?: string
+  theme: 'light' | 'dark'
+  onToggleTheme: () => void
 }
 
-const Header: FC<HeaderProps> = ({ siteTitle = '' }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme }) => {
+  const classes = useStyles()
+
+  return (
+    <AppBar component="header" position="static">
+      <Toolbar className={classes.toolbar}>
+        <Typography variant="h6" className={classes.title}>
+          <Link
+            to="/"
+            component={GatsbyLink}
+            color="inherit"
+            className={classes.link}
+          >
+            {siteTitle}
+          </Link>
+        </Typography>
+        <Button color="inherit" onClick={onToggleTheme}>
+          Toggle Theme
+        </Button>
+      </Toolbar>
+    </AppBar>
+  )
+}
 
 export default Header

@@ -1,14 +1,15 @@
 {
-  "name": "gatsby-typescript-starter",
+  "name": "gatsby-material-typescript-starter",
   "private": true,
-  "description": "A simple starter using Typescript in front & back side with eslint & prettier",
+  "description": "A simple starter using Typescript & Material-ui",
   "version": "0.1.0",
   "author": "Julien CARON <juliencaron@protonmail.com>",
   "keywords": [
     "gatsby",
     "typescript",
     "eslint",
-    "prettier"
+    "prettier",
+    "material-ui"
   ],
   "license": "MIT",
   "scripts": {
@@ -24,25 +25,24 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^2.20.12",
-    "gatsby-image": "^2.3.1",
-    "gatsby-plugin-google-analytics": "^2.2.3",
-    "gatsby-plugin-manifest": "^2.3.3",
-    "gatsby-plugin-offline": "^3.1.2",
-    "gatsby-plugin-react-helmet": "^3.2.2",
-    "gatsby-plugin-sharp": "^2.5.3",
-    "gatsby-plugin-typescript": "^2.3.2",
-    "gatsby-source-filesystem": "^2.2.2",
-    "gatsby-transformer-sharp": "^2.4.3",
-    "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "@material-ui/core": "latest",
+    "@material-ui/styles": "latest",
+    "deepmerge": "^4.2.2",
+    "gatsby": "latest",
+    "gatsby-plugin-google-analytics": "latest",
+    "gatsby-plugin-manifest": "latest",
+    "gatsby-plugin-material-ui": "^2.1.6",
+    "gatsby-plugin-offline": "latest",
+    "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "react-helmet": "^6.0.0"
   },
   "devDependencies": {
-    "@types/node": "^13.11.1",
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
     "@types/react-helmet": "^5.0.15",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
@@ -60,9 +60,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Junscuzzy/gatsby-typescript-starter"
+    "url": "https://github.com/Junscuzzy/gatsby-material-typescript-starter"
   },
   "bugs": {
-    "url": "https://github.com/Junscuzzy/gatsby-typescript-starter/issues"
+    "url": "https://github.com/Junscuzzy/gatsby-material-typescript-starter/issues"
   }
 }

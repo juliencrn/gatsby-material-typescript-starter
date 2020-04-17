@@ -2,12 +2,17 @@ import React, { FC } from 'react'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Typography } from '@material-ui/core'
 
 const NotFoundPage: FC = () => (
-  <Layout>
+  <Layout container>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Typography variant="h2" gutterBottom component="h1">
+      NOT FOUND
+    </Typography>
+    <Typography variant="body1">
+      You just hit a route that doesn&#39;t exist... the sadness.
+    </Typography>
   </Layout>
 )
 
