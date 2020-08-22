@@ -2,6 +2,8 @@ import { Link as GatsbyLink } from 'gatsby'
 import React, { FC } from 'react'
 import { AppBar, Toolbar, Typography, Link, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import { useDispatch } from 'react-redux'
+import { toggleTheme } from '../redux/appModule'
 
 const useStyles = makeStyles({
   toolbar: {},
@@ -15,12 +17,17 @@ const useStyles = makeStyles({
 
 export interface HeaderProps {
   siteTitle?: string
-  theme: 'light' | 'dark'
-  onToggleTheme: () => void
 }
 
-const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme }) => {
+const Header: FC<HeaderProps> = ({ siteTitle = '' }) => {
   const classes = useStyles()
+  const dispatch = useDispatch()
+
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme())
+  }
+
+  console.log('mount header')
 
   return (
     <AppBar component="header" position="static">
@@ -35,7 +42,7 @@ const Header: FC<HeaderProps> = ({ siteTitle = '', onToggleTheme }) => {
             {siteTitle}
           </Link>
         </Typography>
-        <Button color="inherit" onClick={onToggleTheme}>
+        <Button color="inherit" onClick={handleToggleTheme}>
           Toggle Theme
         </Button>
       </Toolbar>

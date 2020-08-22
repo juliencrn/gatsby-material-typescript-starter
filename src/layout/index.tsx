@@ -1,53 +1,44 @@
 import React, { FC } from 'react'
 import { makeStyles, ThemeProvider } from '@material-ui/styles'
-import { Container, Theme, CssBaseline } from '@material-ui/core'
+import { Theme } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
 import Header from './header'
 import Footer from './footer'
 import themes from '../theme'
 import useSiteMetadata from '../hooks/useSiteMetadata'
-import useLocalStorage from '../hooks/useLocalStorage'
+import { RootState } from '../redux/store'
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
+    backgroundColor: theme.palette.background.default,
   },
   main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2),
+    backgroundColor: theme.palette.background.default,
   },
 }))
 
-type ThemeMode = 'light' | 'dark'
-
-const Layout: FC<{ container?: boolean }> = ({
-  children,
-  container = false,
-}) => {
+const LayoutComponent: FC = ({ children }) => {
   const classes = useStyles()
   const { title } = useSiteMetadata()
-  const [theme, setTheme] = useLocalStorage('theme', 'light')
+  return (
+    <div className={classes.root}>
+      <Header siteTitle={title} />
+      <main className={classes.main}>{children}</main>
+      <Footer />
+    </div>
+  )
+}
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light')
-  }
+const Layout: FC = ({ children }) => {
+  const { theme } = useSelector((state: RootState) => state.app)
 
   return (
-    <ThemeProvider theme={themes[theme as ThemeMode]}>
-      <CssBaseline />
-      <div className={classes.root}>
-        <Header siteTitle={title} onToggleTheme={toggleTheme} theme={theme} />
-        {container ? (
-          <Container component="main" maxWidth="md" className={classes.main}>
-            {children}
-          </Container>
-        ) : (
-          <main>{children}</main>
-        )}
-        <Footer />
-      </div>
+    <ThemeProvider theme={themes[theme]}>
+      <LayoutComponent>{children}</LayoutComponent>
     </ThemeProvider>
   )
 }

@@ -3,7 +3,6 @@ import { Link as GatsbyLink } from 'gatsby'
 import { Grid, Button, Theme } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
-import Layout from '../layout'
 import SEO from '../components/seo'
 import Hero from '../components/hero'
 
@@ -16,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 const IndexPage: FC = () => {
   const classes = useStyles()
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <Hero
         title="Hi people"
@@ -38,7 +37,7 @@ const IndexPage: FC = () => {
           </Grid>
         </div>
       </Hero>
-    </Layout>
+    </>
   )
 }
 
